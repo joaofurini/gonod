@@ -2,7 +2,7 @@
 
 const Route = use('Route')
 
-Route.post('users', 'UserController.store')
+Route.post('users', 'UserController.store').validator('User')
 Route.post('sessions', 'SessionController.store')
 Route.post('passwords', 'ForgotPasswordController.store')
 
@@ -14,5 +14,7 @@ Route.group(() => {
   Route.post('/files', 'FileController.store')
 
   Route.resource('projects', 'ProjectController').apiOnly()
+
+  Route.resource('projects.task', 'TaskController').apiOnly()
 }).middleware(['auth'])
 
